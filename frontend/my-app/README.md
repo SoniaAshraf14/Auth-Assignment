@@ -1,129 +1,60 @@
-# Full Authentication System with Dashboard (React + Express + MongoDB)
+# Frontend README - User Authentication Dashboard
 
-This is a **full-stack authentication system** developed using **React**, **Express.js**, **MongoDB**, and **Node.js**. It includes user signup, login, password reset via OTP, image uploads (cover photo and profile image), and a responsive dashboard with update functionality.
+## Project Title:
 
----
+**User Signup & Dashboard (Frontend)**
 
-### Features
+## Author:
 
-* User Signup with:
-
-  * Email, Password, Gender, Date of Birth, Phone Number
-  * Validations (DOB, Pakistani phone number, password strength)
-  * Auto-generated unique username (editable only after 24 hours)
-  * Upload cover photo and profile image using Multer
-
-* Login with JWT authentication
-
-* Forgot Password (OTP via email)
-
-* Reset Password with OTP validation
-
-* Responsive Dashboard:
-
-  * View and update username (1 update allowed every 24 hours)
-  * View and update cover photo and profile picture
-  * View personal info (email, DOB, gender)
-
-* Protected routes with token validation
+**Sonia**
 
 ---
 
-## Tech Stack
+## Technologies Used:
 
-| Frontend | Backend | Database | Others                                 |
-| -------- | ------- | -------- | -------------------------------------- |
-| React    | Express | MongoDB  | Axios, bcrypt, JWT, Multer, Nodemailer |
-
----
-
-### Folder Structure
-
-### Frontend (React - Vite)
-
-```
-frontend/
-├── public/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── App.jsx
-│   ├── main.jsx
-├── package.json
-├── tailwind.config.js
-```
-
-Backend (Express + MongoDB)
-
-```
-backend/
-├── controller/
-│   └── userController.js
-├── middleware/
-│   ├── upload.js
-│   ├── validateSignup.js
-├── models/
-│   └── User.js
-├── routes/
-│   └── userRoute.js
-|   └── authRoute.js
-├── uploads/
-│   └── profileImage & coverPhoto saved here
-├── config/
-│   └── db.js
-├── app.js
-├── .env
-```
+* React.js (Vite)
+* Tailwind CSS
+* Axios
+* React Hook Form
+* React Router DOM
 
 ---
 
-### API Routes
+## Project Features:
 
-### Public Routes
+* Signup with validation (email, password, gender, date of birth, phone number)
+* Auto-generated username (read-only for 24 hours)
+* Login with JWT token
+* Dashboard showing:
 
-| Method | Endpoint                   | Description                   |
-| ------ | -------------------------- | ----------------------------- |
-| POST   | `/api/users/signup`        | User signup with image & data |
-| POST   | `/api/auth/login`          | User login                    |
-| POST   | `/api/auth/forgotpassword` | Send OTP to email             |
-| POST   | `/api/auth/resetpassword`  | Reset password using OTP      |
-
-### Protected Routes (JWT Token Required)
-
-| Method | Endpoint                             | Description                |
-| ------ | ------------------------------------ | -------------------------- |
-| GET    | `/api/users/:userId`                 | Get user by ID             |
-| PATCH  | `/api/users/update-username/:userId` | Update username            |
-| PATCH  | `/api/users/update-photo/:userId`    | Upload profile/cover photo |
+  * Cover photo
+  * Profile image
+  * Email, Gender, Date of Birth (DOB), Username (editable after 24 hours)
+* Image upload for profile & cover images (Multer integrated backend)
+* Logout functionality (clears token & userId from localStorage)
 
 ---
 
-## Getting Started
+## Validations:
 
-### 1. Clone the Project
+* **Password:** Must contain 8+ characters, 1 uppercase, 1 lowercase, 1 number, 1 special character
+* **Phone Number:** Must start with "03" and be 11 digits long (Pakistani number)
+* **DOB:** Minimum age 15 years
+* **Gender:** Male, Female, Custom
 
-```bash
-git clone https://github.com/your-username/your-repo-name
-```
+---
 
-### 2. Backend Setup
+## What I Learned:
 
-```bash
-cd backend
-npm install
-```
+* How to handle forms with `react-hook-form`
+* Axios integration with token headers
+* Conditional rendering and state management
+* File input handling in React
+* Route protection using JWT stored in localStorage
 
-**.env File**
+---
 
-```
-PORT=5000
-MONGO_URI=your_mongodb_url
-JWT_SECRET=your_jwt_secret
-EMAIL_USER=your_email_address
-EMAIL_PASS=your_email_password
-```
-
-### 3. Frontend Setup
+## How to Run (Frontend):
 
 ```bash
 cd frontend
@@ -133,53 +64,31 @@ npm run dev
 
 ---
 
-##  Validations
+## AI Contribution:
 
-* **Password:** Must include uppercase, lowercase, special character, number, min 8 chars
-* **Phone Number:** Must be a valid Pakistani number starting with 03 (11 digits)
-* **DOB:** Must be 15 years or older
-* **Username:** Editable only after 24 hours
-* **Email:** Cannot be changed once registered
+* 95% Frontend developed by **me (Sonia)**
+* 5% Guidance, logic corrections & form validations helped by **ChatGPT**
 
 ---
 
-## 📸 Image Uploads
+## Folder Structure
 
-* Handled using `multer` on backend
-* Images are stored in the `/uploads` folder
-* File names are saved in MongoDB with the user document
-
----
-
-## 📌 Future Improvements
-
-* Pagination & search for users
-* Logout button on dashboard
-* Profile deletion option
-* Dark mode theme
-* Role-based access (Admin, User)
-
----
-
-Contribution Breakdown
-
-| Contributor                | Work Done                                                  |
-| -------------------------- | ---------------------------------------------------------- |
-| **Sonia**                  | Designed UI, built React components, integrated APIs       |
-| ChatGPT (AI Assistant)** | Helped in backend logic, error fixes, and code suggestions |
-
-**AI Contribution Estimate:** \~95% of the backend structure and error-handling logic, \~20% guidance on frontend integration.
-**Sonia's Contribution Estimate:** \~5% hands-on development, styling, API integration, form building, and logic testing.
+```
+frontend/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   │   ├── Login.jsx
+│   │   ├── Signup.jsx
+│   │   └── Dashboard.jsx
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+└── tailwind.config.js
+```
 
 ---
 
-Author
+## Credits:
 
-**Sonia**
-Feel free to connect and share feedback!
-
----
-
-License
-
-This project is licensed for learning purposes and personal development use only.
+This project is created by **Sonia** as part of a personal learning journey into full-stack authentication systems using React and Node.js.
